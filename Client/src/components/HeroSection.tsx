@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { Button } from './ui/button';
 import { GraduationCap, BookOpen, Users } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import videoBg from '../assets/school aerial view.mp4'
 
 interface HeroSectionProps {
   language: string;
@@ -54,13 +54,16 @@ export function HeroSection({ language }: HeroSectionProps) {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background image */}
+      {/* Background Video */}
       <div className="absolute inset-0">
-        <ImageWithFallback
-          src="https://images.unsplash.com/photo-1603958956194-cf9718dba4b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50cyUyMHNjaG9vbCUyMGJ1aUxkaW5nfGVufDF8fHx8MTc1NjUyNDU1MXww&ixlib=rb-4.1.0&q=80&w=1080"
-          alt="Modern school building with students"
+      <video
+          autoPlay
+          loop
+          muted
           className="w-full h-full object-cover"
-        />
+        >
+          <source src={videoBg} type="video/mp4" />
+          </video>
         <div className="absolute inset-0 bg-background/70 backdrop-blur-[2px]" />
       </div>
       
