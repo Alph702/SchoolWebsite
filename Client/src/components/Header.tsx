@@ -214,7 +214,32 @@ export function Header({ currentPage = 'home', onNavigate, language, setLanguage
                 {item.name}
               </motion.button>
             ))}
-            
+            {/* Language Selector for Mobile */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <motion.button
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -20 }}
+                  transition={{ duration: 0.3, delay: menuItems.length * 0.1 }}
+                  className="flex items-center gap-2 w-full text-left px-4 py-2 text-foreground hover:text-primary hover:bg-accent rounded-md transition-colors duration-200"
+                >
+                  <Globe size={16} />
+                  {language}
+                </motion.button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start">
+                <DropdownMenuItem onClick={() => setLanguage('English')}>
+                  English
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setLanguage('Sindhi')}>
+                  Sindhi
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => setLanguage('Urdu')}>
+                  Urdu
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
             {/* Mobile Login Button */}
             <motion.button
               onClick={handleLoginClick}
