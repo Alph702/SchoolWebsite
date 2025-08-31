@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { Button } from './ui/button';
 import { GraduationCap, BookOpen, Users } from 'lucide-react';
-import videoBg from '../assets/school aerial view.mp4'
+import videoBg from '/School aerial view.mp4';
 
 interface HeroSectionProps {
   language: string;
