@@ -477,7 +477,13 @@ export function ProgramsSection({ language }: ProgramsSectionProps) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Button size="lg" className="text-lg px-8 py-3">
+                <Button onClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+ size="lg" className="text-lg px-8 py-3">
                   Get Admission Information
                 </Button>
               </motion.div>
