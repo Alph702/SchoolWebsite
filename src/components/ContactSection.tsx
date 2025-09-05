@@ -74,10 +74,43 @@ export function ContactSection({ language }: ContactSectionProps) {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [result, setResult] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setResult("Sending....");
+
+    const formDataForApi = new FormData(e.currentTarget);
+    // IMPORTANT: Replace with your Web3Forms Access Key
+    formDataForApi.append("access_key", "b1e52c21-3677-4c31-a672-981bd83d064e");
+
+    try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formDataForApi
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            setResult("Form Submitted Successfully!");
+            setFormData({
+                name: '',
+                email: '',
+                phone: '',
+                message: ''
+            });
+            setTimeout(() => {
+                setResult("");
+            }, 5000);
+        } else {
+            console.error("Error submitting form:", data);
+            setResult(data.message || "An error occurred.");
+        }
+    } catch (error) {
+        console.error("An error occurred during form submission:", error);
+        setResult("An error occurred. Please try again later.");
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -360,6 +393,16 @@ export function ContactSection({ language }: ContactSectionProps) {
                     </Button>
                   </motion.div>
                 </form>
+
+                {result && (
+                  <motion.p 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-center mt-4 text-sm font-medium text-green-500"
+                  >
+                    {result}
+                  </motion.p>
+                )}
               </div>
             </div>
           </motion.div>

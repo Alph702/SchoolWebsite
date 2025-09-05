@@ -196,9 +196,9 @@ export function HeroSection({ language }: HeroSectionProps) {
             className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto"
           >
             {[
-              { number: "500+", label: t.Students },
+              { number: "1600+", label: t.Students },
               { number: "25+", label: t.Teachers },
-              { number: "15+", label: t['Years of Excellence'] }
+              { number: "8+", label: t['Years of Excellence'] }
             ].map((stat, index) => (
               <motion.div
                 key={index}
