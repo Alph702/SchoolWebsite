@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+// import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'motion/react';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
@@ -26,7 +26,36 @@ function HomePage({ language }: { language: string }) {
 
 export default function App() {
   const [language, setLanguage] = useState('English');
-  const location = useLocation();
+  const [pathname, setPathname] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setPathname(window.location.pathname);
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
+
+  const renderPage = () => {
+    const path = pathname;
+    if (path === '/login') {
+      return <LoginPage language={language} />;
+    }
+    if (path === '/announcements') {
+      return <AnnouncementsPage onBack={() => {}} language={language} />;
+    }
+    if (path.startsWith('/subject/')) {
+      return (
+        <>
+          <div className="h-16 sm:h-20" />
+          <SubjectPage language={language} />
+        </>
+      );
+    }
+    return <HomePage language={language} />;
+  };
 
   return (
     <div className="bg-background text-foreground font-sans">
@@ -36,23 +65,14 @@ export default function App() {
       />
       <main>
         <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<HomePage language={language} />} />
-            <Route path="/login" element={<LoginPage language={language} />} />
-            <Route path="/announcements" element={<AnnouncementsPage onBack={() => {}} language={language} />} />
-            <Route
-              path="/subject/:subjectName"
-              element={
-                <>
-                  <div className="h-16 sm:h-20" />
-                  <SubjectPage language={language} />
-                </>
-              }
-            />
-          </Routes>
+          {renderPage()}
         </AnimatePresence>
       </main>
       <Footer language={language} />
     </div>
   );
+}
+
+function useEffect(arg0: () => () => void, arg1: never[]) {
+  throw new Error('Function not implemented.');
 }

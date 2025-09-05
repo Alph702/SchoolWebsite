@@ -1,7 +1,6 @@
 import { motion } from 'motion/react';
 import { Button } from './ui/button';
 import { BookOpen, Calculator, Globe, Palette, Microscope, Computer } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import { ImageWithFallback } from './functions/ImageWithFallback';
 import bio from '../assets/bio.jpg';
 import cs from '../assets/cs.jpg';
@@ -195,13 +194,13 @@ export function ProgramsSection({ language }: ProgramsSectionProps) {
         'Urdu': 'اردو',
         'Sindhi': 'سندھی',
         'Islamiat': 'اسلامیات',
-        'Explore the wonders of science, including biology, chemistry, and physics.': 'سائنس کے عجائبات کو دریافت کریں، بشمول حیاتیات، کیمسٹری اور فزکس.',
+        'Explore the wonders of science, including biology, chemistry, and physics.': 'سائنس کے عجائبات کو دریافت کریں، بشمول حیاتیات، ڪيمسٽري اور فزڪس.',
         'Develop mathematical skills and problem-solving abilities.': 'ریاضی کی مہارتیں اور مسائل کو حل کرنے کی صلاحیتوں کو فروغ دیں۔',
         'Master the English language through literature and communication.': 'ادب اور مواصلات کے ذریعے انگریزی زبان میں مہارت حاصل کریں۔',
-        'Study Social Studies including history, geography, and civics.': 'تاریخ، جغرافیہ اور شہریات سمیت سماجی علوم کا مطالعہ کریں۔',
+        'Study Social Studies including history, geography, and civics.': 'تاریخ، جاگرافیہ اور شہریات سمیت سماجی علوم کا مطالعہ کریں۔',
         'Study the Urdu language and literature.': 'اردو زبان اور ادب کا مطالعہ کریں۔',
-        'Study the Sindhi language and literature.': 'سندھی زبان اور ادب کا مطالعہ کریں۔',
-        'Study Islamic history and teachings.': 'اسلامی تاریخ اور تعلیمات کا مطالعہ کریں۔',
+        'Study the Sindhi language and literature.': 'سنڌي ٻولي ۽ ادب جو مطالعو ڪريو.',
+        'Study Islamic history and teachings.': 'اسلامی تاریخ اور تعلیمات کا مطالعو ڪريو.',
         'Algebra': 'الجبرا',
         'Geometry': 'جیومیٹری',
         'Arithmetic': 'حساب',
@@ -421,7 +420,7 @@ export function ProgramsSection({ language }: ProgramsSectionProps) {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <Link to={`/subject/${program.id}`}>
+                      
                         <Button 
                           variant="outline" 
                           size="sm" 
@@ -429,7 +428,7 @@ export function ProgramsSection({ language }: ProgramsSectionProps) {
                         >
                           {t['Learn More']}
                         </Button>
-                      </Link>
+                      
                     </motion.div>
                   </div>
                 </div>

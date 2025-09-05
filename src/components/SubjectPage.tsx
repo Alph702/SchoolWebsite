@@ -1,5 +1,4 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { subjects } from '../data/subjects';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,7 +9,7 @@ interface SubjectPageProps {
 }
 
 const SubjectPage: React.FC<SubjectPageProps> = ({ language }) => {
-  const { subjectName } = useParams<{ subjectName: string }>();
+  const subjectName = window.location.pathname.split('/').pop();
   const subject = subjects.find((s) => s.id === subjectName);
 
   if (!subject) {

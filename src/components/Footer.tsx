@@ -1,5 +1,4 @@
 import { motion } from 'motion/react';
-import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin, Clock } from 'lucide-react';
 import schoolLogo from '../assets/school-logo.png';
 import { ImageWithFallback } from './functions/ImageWithFallback';
@@ -234,12 +233,12 @@ export function Footer({ language }: FooterProps) {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <Link
-                      to={link.href}
+                    <a
+                      href={link.href}
                       className="text-sm opacity-80 hover:opacity-100 transition-all duration-200 hover:underline"
                     >
                       {link.name}
-                    </Link>
+                    </a>
                   </motion.li>
                 ))}
               </ul>
@@ -262,12 +261,12 @@ export function Footer({ language }: FooterProps) {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <Link
-                      to={program.href}
+                    <a
+                      href={program.href}
                       className="text-sm opacity-80 hover:opacity-100 transition-all duration-200 hover:underline"
                     >
                       {program.name}
-                    </Link>
+                    </a>
                   </motion.li>
                 ))}
               </ul>
@@ -315,18 +314,18 @@ export function Footer({ language }: FooterProps) {
                 © {new Date().getFullYear()} {t['Shah Abdul Latif']} {t['Higher Secondary School']}. {t['All rights reserved']}.
               </p>
               <div className="flex space-x-6">
-                <Link
-                  to="#"
+                <a
+                  href="#"
                   className="text-sm opacity-80 hover:opacity-100 transition-opacity duration-200 hover:underline"
                 >
                   {t['Privacy Policy']}
-                </Link>
-                <Link
-                  to="#"
+                </a>
+                <a
+                  href="#"
                   className="text-sm opacity-80 hover:opacity-100 transition-opacity duration-200 hover:underline"
                 >
                   {t['Terms of Service']}
-                </Link>
+                </a>
               </div>
             </div>
           </div>

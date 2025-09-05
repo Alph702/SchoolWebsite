@@ -1,7 +1,6 @@
 import { motion } from 'motion/react';
 import { Menu, X, LogIn, Bell, Globe } from 'lucide-react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import schoolLogo from '../assets/school-logo.png'; // Ensure you have a logo image in the specified path
 import { Button } from './ui/button';
 import {
@@ -19,7 +18,6 @@ interface HeaderProps {
 
 export function Header({ language, setLanguage }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const navigate = useNavigate();
 
   const translations = {
     'English': {
@@ -66,21 +64,18 @@ export function Header({ language, setLanguage }: HeaderProps) {
 
   const handleNavClick = (path: string) => {
     if (path.startsWith('/#')) {
-      navigate('/');
-      setTimeout(() => {
-        const element = document.querySelector(path.substring(1));
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
+      const element = document.getElementById(path.substring(2));
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     } else {
-      navigate(path);
-    }
+      window.location.href = path;
+    } 
     setIsMenuOpen(false);
   };
 
   const handleLoginClick = () => {
-    navigate('/login');
+    window.location.href = '/login';
     setIsMenuOpen(false);
   };
 
