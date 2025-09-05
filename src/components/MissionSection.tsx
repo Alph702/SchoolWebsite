@@ -1,7 +1,9 @@
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useRef } from 'react';
 import { Target, Heart, Lightbulb, Award } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { ImageWithFallback } from './functions/ImageWithFallback';
+import conslingImage from '../assets/consling.jpg';
+
 
 interface MissionSectionProps {
   language: string;
@@ -179,8 +181,8 @@ export function MissionSection({ language }: MissionSectionProps) {
             viewport={{ once: true }}
             className="relative rounded-2xl overflow-hidden"
           >
-            <ImageWithFallback
-              src="https://images.unsplash.com/photo-1557734864-c78b6dfef1b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaXZlcnNlJTIwc3R1ZGVudHMlMjBjbGFzc3Jvb20lMjBsZWFybmluZ3xlbnwxfHx8fDE3NTY1MjQ1NTR8MA&ixlib=rb-4.1.0&q=80&w=1080"
+            <img
+              src={conslingImage}
               alt="Diverse students learning in classroom"
               className="w-full h-64 lg:h-full object-cover"
             />

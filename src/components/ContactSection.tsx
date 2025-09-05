@@ -91,25 +91,25 @@ export function ContactSection({ language }: ContactSectionProps) {
     {
       icon: MapPin,
       title: "Address",
-      details: "Shah Abdul Latif Road, Khairpur, Sindh, Pakistan",
+      details: "Village Haji Khair Muhammad Laghari, Near Laghari Petrol Pump, Mirwah Road Mirpurkhas, Sindh, Pakistan",
       color: "text-blue-500"
     },
     {
       icon: Phone,
       title: "Phone",
-      details: "+92 (243) 123-4567",
+      details: "+92 336 3273937",
       color: "text-green-500"
     },
     {
       icon: Mail,
       title: "Email",
-      details: "info@salschool.edu.pk",
+      details: "schoolsal52gmail.com",
       color: "text-orange-500"
     },
     {
       icon: Clock,
       title: "Hours",
-      details: "Mon - Fri: 8:00 AM - 3:00 PM",
+      details: "Mon - Sat: 8:00 AM - 2:00 PM",
       color: "text-purple-500"
     }
   ];

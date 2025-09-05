@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Menu, X, LogIn, Bell, Globe } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import schoolLogo from '../assets/school-logo.png'; // Ensure you have a logo image in the specified path
 import { Button } from './ui/button';
 import {
@@ -12,14 +13,13 @@ import {
 
 
 interface HeaderProps {
-  currentPage?: string;
-  onNavigate?: (page: string) => void;
   language: string;
   setLanguage: (language: string) => void;
 }
 
-export function Header({ currentPage = 'home', onNavigate, language, setLanguage }: HeaderProps) {
+export function Header({ language, setLanguage }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const translations = {
     'English': {
@@ -57,41 +57,30 @@ export function Header({ currentPage = 'home', onNavigate, language, setLanguage
   const t = translations[language as keyof typeof translations];
 
   const menuItems = [
-    { name: t.Home, href: '#home', page: 'home' },
-    { name: t.Mission, href: '#mission', page: 'home' },
-    { name: t.Programs, href: '#programs', page: 'home' },
-    { name: t.Contact, href: '#contact', page: 'home' },
-    { name: t.Announcements, href: '#announcements', page: 'announcements' },
+    { name: t.Home, path: '/' },
+    { name: t.Mission, path: '/#mission' },
+    { name: t.Programs, path: '/#programs' },
+    { name: t.Contact, path: '/#contact' },
+    { name: t.Announcements, path: '/announcements' },
   ];
 
-  const handleNavClick = (item: any) => {
-    if (onNavigate) {
-      if (item.page === 'home' && currentPage !== 'home') {
-        onNavigate('home');
-        // Small delay to allow page transition, then scroll to section
-        setTimeout(() => {
-          const element = document.querySelector(item.href);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }
-        }, 100);
-      } else if (item.page !== 'home') {
-        onNavigate(item.page);
-      } else {
-        // Already on home page, just scroll to section
-        const element = document.querySelector(item.href);
+  const handleNavClick = (path: string) => {
+    if (path.startsWith('/#')) {
+      navigate('/');
+      setTimeout(() => {
+        const element = document.querySelector(path.substring(1));
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
-      }
+      }, 100);
+    } else {
+      navigate(path);
     }
     setIsMenuOpen(false);
   };
 
   const handleLoginClick = () => {
-    if (onNavigate) {
-      onNavigate('login');
-    }
+    navigate('/login');
     setIsMenuOpen(false);
   };
 
@@ -108,7 +97,7 @@ export function Header({ currentPage = 'home', onNavigate, language, setLanguage
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => handleNavClick({ name: 'Home', href: '#home', page: 'home' })}
+            onClick={() => handleNavClick('/')}
             className="flex items-center space-x-3"
           >
             <img 
@@ -127,7 +116,7 @@ export function Header({ currentPage = 'home', onNavigate, language, setLanguage
             {menuItems.map((item, index) => (
               <motion.button
                 key={item.name}
-                onClick={() => handleNavClick(item)}
+                onClick={() => handleNavClick(item.path)}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -205,7 +194,7 @@ export function Header({ currentPage = 'home', onNavigate, language, setLanguage
             {menuItems.map((item, index) => (
               <motion.button
                 key={item.name}
-                onClick={() => handleNavClick(item)}
+                onClick={() => handleNavClick(item.path)}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: isMenuOpen ? 1 : 0, x: isMenuOpen ? 0 : -20 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}

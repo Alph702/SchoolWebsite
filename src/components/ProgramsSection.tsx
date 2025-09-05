@@ -1,11 +1,18 @@
 import { motion } from 'motion/react';
 import { Button } from './ui/button';
 import { BookOpen, Calculator, Globe, Palette, Microscope, Computer } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { Link } from 'react-router-dom';
+import { ImageWithFallback } from './functions/ImageWithFallback';
+import bio from '../assets/bio.jpg';
+import cs from '../assets/cs.jpg';
+import math from '../assets/Math.jpg';
+import english from '../assets/English.jpg';
+import sst from '../assets/SST.jpg';
+import urdu from '../assets/Language.jpg';
 
 interface ProgramsSectionProps {
   language: string;
-}
+} 
 
 export function ProgramsSection({ language }: ProgramsSectionProps) {
   const translations = {
@@ -47,6 +54,34 @@ export function ProgramsSection({ language }: ProgramsSectionProps) {
       'Ready to Join Our Academic Community?': 'Ready to Join Our Academic Community?',
       'Discover how our comprehensive programs can help shape your child\'s future. Contact us to learn more about admission requirements and enrollment process.': 'Discover how our comprehensive programs can help shape your child\'s future. Contact us to learn more about admission requirements and enrollment process.',
       'Get Admission Information': 'Get Admission Information',
+      'Science': 'Science',
+      'Math': 'Math',
+      'English': 'English',
+      'SST': 'SST',
+      'Urdu': 'Urdu',
+      'Sindhi': 'Sindhi',
+      'Islamiat': 'Islamiat',
+      'Explore the wonders of science, including biology, chemistry, and physics.': 'Explore the wonders of science, including biology, chemistry, and physics.',
+      'Develop mathematical skills and problem-solving abilities.': 'Develop mathematical skills and problem-solving abilities.',
+      'Master the English language through literature and communication.': 'Master the English language through literature and communication.',
+      'Study Social Studies including history, geography, and civics.': 'Study Social Studies including history, geography, and civics.',
+      'Study the Urdu language and literature.': 'Study the Urdu language and literature.',
+        'Study the Sindhi language and literature.': 'Study the Sindhi language and literature.',
+        'Study Islamic history and teachings.': 'Study Islamic history and teachings.',
+        'Algebra': 'Algebra',
+        'Geometry': 'Geometry',
+        'Arithmetic': 'Arithmetic',
+        'Grammar': 'Grammar',
+        'Literature': 'Literature',
+        'Writing': 'Writing',
+        'Civics': 'Civics',
+        'Urdu Language': 'Urdu Language',
+        'Sindhi Literature': 'Sindhi Literature',
+        'Sindhi Language': 'Sindhi Language',
+        'Islamic History': 'Islamic History',
+        'Quranic Studies': 'Quranic Studies',
+        'Languages & Islamic Studies': 'Languages & Islamic Studies',
+        'Comprehensive program for Urdu, Sindhi, and Islamic studies.': 'Comprehensive program for Urdu, Sindhi, and Islamic studies.',
     },
     'Sindhi': {
       'Academic Programs': 'تعليمي پروگرام',
@@ -86,6 +121,34 @@ export function ProgramsSection({ language }: ProgramsSectionProps) {
       'Ready to Join Our Academic Community?': 'اسان جي تعليمي برادري ۾ شامل ٿيڻ لاءِ تيار آهيو؟',
       'Discover how our comprehensive programs can help shape your child\'s future. Contact us to learn more about admission requirements and enrollment process.': 'دريافت ڪريو ته اسان جا جامع پروگرام توهان جي ٻار جي مستقبل کي شڪل ڏيڻ ۾ ڪيئن مدد ڪري سگهن ٿا. داخلا جي گهرج ۽ داخلا جي عمل بابت وڌيڪ سکڻ لاءِ اسان سان رابطو ڪريو.',
       'Get Admission Information': 'داخلا جي معلومات حاصل ڪريو',
+      'Science': 'سائنس',
+        'Math': 'رياضي',
+        'English': 'انگريزي',
+        'SST': 'ايس ايس ٽي',
+        'Urdu': 'اردو',
+        'Sindhi': 'سنڌي',
+        'Islamiat': 'اسلاميات',
+        'Explore the wonders of science, including biology, chemistry, and physics.': 'سائنس جي عجائبات کي دريافت ڪريو، بشمول حياتيات، ڪيمسٽري ۽ فزڪس.',
+        'Develop mathematical skills and problem-solving abilities.': 'رياضي جي صلاحيتن ۽ مسئلا حل ڪرڻ جي صلاحيتن کي وڌايو.',
+        'Master the English language through literature and communication.': 'ادب ۽ ڪميونيڪيشن ذريعي انگريزي ٻوليءَ ۾ مهارت حاصل ڪريو.',
+        'Study Social Studies including history, geography, and civics.': 'تاريخ، جاگرافي ۽ شهريت سميت سماجي اڀياس جو مطالعو ڪريو.',
+        'Study the Urdu language and literature.': 'اردو ٻولي ۽ ادب جو مطالعو ڪريو.',
+        'Study the Sindhi language and literature.': 'سنڌي ٻولي ۽ ادب جو مطالعو ڪريو.',
+        'Study Islamic history and teachings.': 'اسلامي تاريخ ۽ تعليمات جو مطالعو ڪريو.',
+        'Algebra': 'الجبرا',
+        'Geometry': 'جاميٽري',
+        'Arithmetic': 'حساب',
+        'Grammar': 'گرامر',
+        'Literature': 'ادب',
+        'Writing': 'لکھڻ',
+        'Civics': 'شهريت',
+        'Urdu Language': 'اردو ٻولي',
+        'Sindhi Literature': 'سنڌي ادب',
+        'Sindhi Language': 'سنڌي ٻولي',
+        'Islamic History': 'اسلامي تاريخ',
+        'Quranic Studies': 'قرآني اڀياس',
+        'Languages & Islamic Studies': 'ٻوليون ۽ اسلامي اڀياس',
+        'Comprehensive program for Urdu, Sindhi, and Islamic studies.': 'اردو، سنڌي ۽ اسلامي اڀياس لاءِ جامع پروگرام.',
     },
     'Urdu': {
       'Academic Programs': 'تعلیمی پروگرام',
@@ -96,27 +159,27 @@ export function ProgramsSection({ language }: ProgramsSectionProps) {
       'English Language': 'انگریزی زبان',
       'Islamic Studies': 'اسلامی علوم',
       'Mathematics & Sciences': 'ریاضی اور سائنس',
-      'Advanced mathematics and science curriculum preparing students for higher education.': 'اعلیٰ تعلیم کے لیے طلباء کو تیار کرنے والا جدید ریاضی اور سائنس کا نصاب۔',
+      'Advanced mathematics and science curriculum preparing students for higher education.': 'اعلیٰ تعلیم کے لیے طلباء کو تیار کرنے والا جدید ریاضی اور سائنس کا نصاب.',
       'Advanced Mathematics': 'اعلیٰ ریاضی',
       'Physics': 'طبیعیات',
       'Chemistry': 'کیمیا',
       'Social Sciences': 'سماجی علوم',
-      'Understanding society, history, and global perspectives through comprehensive studies.': 'جامع مطالعات کے ذریعے معاشرے، تاریخ اور عالمی تناظر کو سمجھنا۔',
+      'Understanding society, history, and global perspectives through comprehensive studies.': 'جامع مطالعات کے ذریعے معاشرے، تاریخ اور عالمی تناظر کو سمجھنا.',
       'History': 'تاریخ',
       'Geography': 'جغرافیہ',
       'Political Science': 'سیاسیات',
       'Arts & Culture': 'فنون اور ثقافت',
-      'Creative expression through visual arts, music, and cultural appreciation programs.': 'بصری فنون، موسیقی، اور ثقافتی قدردانی کے پروگراموں کے ذریعے تخلیقی اظہار۔',
+      'Creative expression through visual arts, music, and cultural appreciation programs.': 'بصری فنون، موسیقی، اور ثقافتی قدردانی کے پروگراموں کے ذریعے تخلیقی اظہار.',
       'Fine Arts': 'فنون لطیفہ',
       'Music': 'موسیقی',
       'Cultural Studies': 'ثقافتی علوم',
       'Applied Sciences': 'اطلاقی علوم',
-      'Hands-on learning in biology, environmental science, and practical applications.': 'حیاتیات، ماحولیاتی سائنس، اور عملی ایپلی کیشنز میں ہاتھ پر سیکھنا۔',
+      'Hands-on learning in biology, environmental science, and practical applications.': 'حیاتیات، ماحولیاتی سائنس، اور عملی ایپلی کیشنز میں ہاتھ پر سیکھنا.',
       'Biology': 'حیاتیات',
       'Environmental Science': 'ماحولیاتی سائنس',
       'Lab Work': 'لیب کا کام',
       'Technology & Skills': 'ٹیکنالوجی اور ہنر',
-      'Modern technology skills and computer literacy for the digital age.': 'ڈیجیٹل دور کے لیے جدید ٹیکنالوجی کی مہارتیں اور کمپیوٽر کی خواندگی۔',
+      'Modern technology skills and computer literacy for the digital age.': 'ڈیجیٹل دور کے لیے جدید ٹیکنالوجی کی مہارتیں اور کمپیوٽر کی خواندگی.',
       'Computer Science': 'کمپیوٽر سائنس',
       'Digital Literacy': 'ڈیجیٹل خواندگی',
       'IT Skills': 'آئی ٹی ہنر',
@@ -125,60 +188,94 @@ export function ProgramsSection({ language }: ProgramsSectionProps) {
       'Ready to Join Our Academic Community?': 'ہماری تعلیمی برادری میں شامل ہونے کے لیے تیار ہیں؟',
       'Discover how our comprehensive programs can help shape your child\'s future. Contact us to learn more about admission requirements and enrollment process.': 'دریافت کریں کہ ہمارے جامع پروگرام آپ کے بچے کے مستقبل کو کس طرح تشکیل دے سکتے ہیں۔ داخلے کی ضروریات اور اندراج کے عمل کے بارے میں مزید جاننے کے لیے ہم سے رابطہ کریں۔',
       'Get Admission Information': 'داخلہ کی معلومات حاصل کریں',
-    },
+      'Science': 'سائنس',
+        'Math': 'ریاضی',
+        'English': 'انگریزی',
+        'SST': 'ایس ایس ٹی',
+        'Urdu': 'اردو',
+        'Sindhi': 'سندھی',
+        'Islamiat': 'اسلامیات',
+        'Explore the wonders of science, including biology, chemistry, and physics.': 'سائنس کے عجائبات کو دریافت کریں، بشمول حیاتیات، کیمسٹری اور فزکس.',
+        'Develop mathematical skills and problem-solving abilities.': 'ریاضی کی مہارتیں اور مسائل کو حل کرنے کی صلاحیتوں کو فروغ دیں۔',
+        'Master the English language through literature and communication.': 'ادب اور مواصلات کے ذریعے انگریزی زبان میں مہارت حاصل کریں۔',
+        'Study Social Studies including history, geography, and civics.': 'تاریخ، جغرافیہ اور شہریات سمیت سماجی علوم کا مطالعہ کریں۔',
+        'Study the Urdu language and literature.': 'اردو زبان اور ادب کا مطالعہ کریں۔',
+        'Study the Sindhi language and literature.': 'سندھی زبان اور ادب کا مطالعہ کریں۔',
+        'Study Islamic history and teachings.': 'اسلامی تاریخ اور تعلیمات کا مطالعہ کریں۔',
+        'Algebra': 'الجبرا',
+        'Geometry': 'جیومیٹری',
+        'Arithmetic': 'حساب',
+        'Grammar': 'گرامر',
+        'Literature': 'ادب',
+        'Writing': 'لکھنا',
+        'Civics': 'شہریات',
+        'Urdu Language': 'اردو زبان',
+        'Sindhi Literature': 'سندھی ادب',
+        'Sindhi Language': 'سندھی زبان',
+        'Islamic History': 'اسلامی تاریخ',
+        'Quranic Studies': 'قرآنی علوم',
+        'Languages & Islamic Studies': 'زبانیں اور اسلامی علوم',
+        'Comprehensive program for Urdu, Sindhi, and Islamic studies.': 'اردو، سندھی اور اسلامی علوم کے لیے جامع پروگرام۔',
+    }
   };
 
   const t = translations[language as keyof typeof translations];
 
   const programs = [
     {
-      icon: BookOpen,
-      title: t['Literature & Languages'],
-      description: t['Comprehensive language arts program focusing on Urdu, English, and classical literature.'],
-      subjects: [t['Urdu Literature'], t['English Language'], t['Islamic Studies']],
-      color: "from-primary/20 to-secondary/20",
-      image: "https://images.unsplash.com/photo-1578402027442-b0d03cd2c0a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzY2hvb2wlMjBsaWJyYXJ5JTIwc3R1ZGVudHMlMjByZWFkaW5nfGVufDF8fHx8MTc1NjQ5Njc5Nnww&ixlib=rb-4.1.0&q=80&w=1080"
-    },
-    {
-      icon: Calculator,
-      title: t['Mathematics & Sciences'],
-      description: t['Advanced mathematics and science curriculum preparing students for higher education.'],
-      subjects: [t['Advanced Mathematics'], t['Physics'], t['Chemistry']],
-      color: "from-secondary/20 to-accent/20",
-      image: "https://images.unsplash.com/photo-1605781645799-c9c7d820b4ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50cyUyMHNjaWVuY2UlMjBsYWJvcmF0b3J5fGVufDF8fHx8MTc1NjUyNDU1Nnww&ixlib=rb-4.1.0&q=80&w=1080"
-    },
-    {
-      icon: Globe,
-      title: t['Social Sciences'],
-      description: t['Understanding society, history, and global perspectives through comprehensive studies.'],
-      subjects: [t['History'], t['Geography'], t['Political Science']],
-      color: "from-primary/20 to-accent/20",
-      image: "https://images.unsplash.com/photo-1557734864-c78b6dfef1b1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaXZlcnNlJTIwc3R1ZGVudHMlMjBjbGFzc3Jvb20lMjBsZWFybmluZ3xlbnwxfHx8fDE3NTY1MjQ1NTR8MA&ixlib=rb-4.1.0&q=80&w=1080"
-    },
-    {
-      icon: Palette,
-      title: t['Arts & Culture'],
-      description: t['Creative expression through visual arts, music, and cultural appreciation programs.'],
-      subjects: [t['Fine Arts'], t['Music'], t['Cultural Studies']],
-      color: "from-accent/20 to-secondary/20",
-      image: "https://images.unsplash.com/photo-1752649936498-b565120b373e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50cyUyMGFydCUyMGNyZWF0aXZlJTIwY2xhc3N8ZW58MXx8fHwxNzU2NTI0NTU5fDA&ixlib=rb-4.1.0&q=80&w=1080"
-    },
-    {
-      icon: Microscope,
-      title: t['Applied Sciences'],
-      description: t['Hands-on learning in biology, environmental science, and practical applications.'],
-      subjects: [t['Biology'], t['Environmental Science'], t['Lab Work']],
-      color: "from-secondary/20 to-primary/20",
-      image: "https://images.unsplash.com/photo-1605781645799-c9c7d820b4ac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50cyUyMHNjaWVuY2UlMjBsYWJvcmF0b3J5fGVufDF8fHx8MTc1NjUyNDU1Nnww&ixlib=rb-4.1.0&q=80&w=1080"
-    },
-    {
+      id: 'Computer-Science',
       icon: Computer,
-      title: t['Technology & Skills'],
+      title: t['Computer Science'],
       description: t['Modern technology skills and computer literacy for the digital age.'],
       subjects: [t['Computer Science'], t['Digital Literacy'], t['IT Skills']],
       color: "from-accent/20 to-primary/20",
-      image: "https://images.unsplash.com/photo-1663535067514-66386c117b6a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdHVkZW50cyUyMGNvbXB1dGVyJTIwdGVjaG5vbG9neXxlbnwxfHx8fDE3NTY1MjQ1NjR8MA&ixlib=rb-4.1.0&q=80&w=1080"
-    }
+      image: cs
+    },
+    {
+      id: 'Science',
+      icon: Microscope,
+      title: t['Science'],
+      description: t['Explore the wonders of science, including biology, chemistry, and physics.'],
+      subjects: [t['Biology'], t['Chemistry'], t['Physics']],
+      color: "from-primary/20 to-secondary/20",
+      image: bio
+    },
+    {
+      id: 'Math',
+      icon: Calculator,
+      title: t['Math'],
+      description: t['Develop mathematical skills and problem-solving abilities.'],
+      subjects: [t['Algebra'], t['Geometry'], t['Arithmetic']],
+      color: "from-secondary/20 to-accent/20",
+      image: math
+    },
+    {
+      id: 'English',
+      icon: BookOpen,
+      title: t['English'],
+      description: t['Master the English language through literature and communication.'],
+      subjects: [t['Grammar'], t['Literature'], t['Writing']],
+      color: "from-accent/20 to-secondary/20",
+      image: english
+    },
+    {
+      id: 'SST',
+      icon: Globe,
+      title: t['SST'],
+      description: t['Study Social Studies including history, geography, and civics.'],
+      subjects: [t['History'], t['Geography'], t['Civics']],
+      color: "from-primary/20 to-accent/20",
+      image: sst
+    },
+    {
+      id: 'Languages-&-Islamic-Studies',
+      icon: BookOpen,
+      title: t['Languages & Islamic Studies'],
+      description: t['Comprehensive program for Urdu, Sindhi, and Islamic studies.'],
+      subjects: [t['Urdu'], t['Sindhi'], t['Islamiat']],
+      color: "from-primary/20 to-secondary/20",
+      image: urdu
+    },
   ];
 
   return (
@@ -189,7 +286,7 @@ export function ProgramsSection({ language }: ProgramsSectionProps) {
           animate={{ 
             backgroundPosition: ['0% 0%', '100% 100%', '0% 0%']
           }}
-          transition={{ 
+          transition={{
             duration: 20, 
             repeat: Infinity, 
             ease: "linear" 
@@ -197,11 +294,11 @@ export function ProgramsSection({ language }: ProgramsSectionProps) {
           className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: `
-              conic-gradient(from 0deg at 50% 50%, 
-                transparent 0deg, 
-                rgba(0,0,0,0.1) 90deg, 
-                transparent 180deg, 
-                rgba(0,0,0,0.1) 270deg, 
+              conic-gradient(from 0deg at 50% 50%,
+                transparent 0deg,
+                rgba(0,0,0,0.1) 90deg,
+                transparent 180deg,
+                rgba(0,0,0,0.1) 270deg,
                 transparent 360deg
               )
             `,
@@ -233,14 +330,14 @@ export function ProgramsSection({ language }: ProgramsSectionProps) {
               key={index}
               initial={{ opacity: 0, y: 50, scale: 0.9 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ 
+              transition={{
                 duration: 0.8, 
                 delay: index * 0.1,
                 type: "spring",
                 bounce: 0.3
               }}
               viewport={{ once: true }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.03, 
                 y: -10,
                 transition: { duration: 0.3 }
@@ -324,13 +421,15 @@ export function ProgramsSection({ language }: ProgramsSectionProps) {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <Button 
-                        variant="outline" 
-                        size="sm" 
-                        className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
-                      >
-                        {t['Learn More']}
-                      </Button>
+                      <Link to={`/subject/${program.id}`}>
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300"
+                        >
+                          {t['Learn More']}
+                        </Button>
+                      </Link>
                     </motion.div>
                   </div>
                 </div>
@@ -350,11 +449,11 @@ export function ProgramsSection({ language }: ProgramsSectionProps) {
           <div className="bg-background/80 backdrop-blur-sm rounded-2xl p-8 lg:p-12 border border-border/50 relative overflow-hidden">
             {/* Animated background */}
             <motion.div
-              animate={{ 
+              animate={{
                 scale: [1, 1.2, 1],
                 rotate: [0, 180, 360]
               }}
-              transition={{ 
+              transition={{
                 duration: 10, 
                 repeat: Infinity, 
                 ease: "linear" 

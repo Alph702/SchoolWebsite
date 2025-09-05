@@ -5,7 +5,7 @@ import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Eye, EyeOff, School } from 'lucide-react';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { ImageWithFallback } from './functions/ImageWithFallback';
 
 interface LoginPageProps {
   language: string;

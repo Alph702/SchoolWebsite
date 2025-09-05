@@ -1,7 +1,8 @@
 import { motion } from 'motion/react';
-import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Facebook, Twitter, Instagram, Youtube, Mail, Phone, MapPin, Clock } from 'lucide-react';
 import schoolLogo from '../assets/school-logo.png';
-import { ImageWithFallback } from './figma/ImageWithFallback';
+import { ImageWithFallback } from './functions/ImageWithFallback';
 
 interface FooterProps {
   language: string;
@@ -14,24 +15,20 @@ export function Footer({ language }: FooterProps) {
       'Higher Secondary School': 'Higher Secondary School',
       'Committed to excellence in education, nurturing young minds for a brighter future through quality teaching and moral development.': 'Committed to excellence in education, nurturing young minds for a brighter future through quality teaching and moral development.',
       'Quick Links': 'Quick Links',
-      'About Us': 'About Us',
-      'Admissions': 'Admissions',
-      'Academic Calendar': 'Academic Calendar',
-      'Faculty': 'Faculty',
-      'Student Life': 'Student Life',
-      'News & Events': 'News & Events',
+      'Home': 'Home',
+      'Our Mission': 'Our Mission',
+      'Announcements': 'Announcements',
+      'Our Offerings': 'Our Offerings',
+      'Contact Us': 'Contact Us',
       'Programs': 'Programs',
-      'Pre-Primary': 'Pre-Primary',
-      'Primary Education': 'Primary Education',
-      'Secondary Education': 'Secondary Education',
-      'Higher Secondary': 'Higher Secondary',
-      'Extracurricular': 'Extracurricular',
-      'Special Programs': 'Special Programs',
+      'Computer Science': 'Computer Science',
+      'Science': 'Science',
+      'Math': 'Math',
+      'English': 'English',
+      'Social Studies': 'Social Studies',
+      'Languages & Islamic Studies': 'Languages & Islamic Studies',
       'Stay Connected': 'Stay Connected',
-      'Follow us on social media for updates and news.': 'Follow us on social media for updates and news.',
-      'Subscribe to Newsletter': 'Subscribe to Newsletter',
-      'Enter your email': 'Enter your email',
-      'Subscribe': 'Subscribe',
+      'Follow us on social media for the latest updates and school news.': 'Follow us on social media for the latest updates and school news.',
       'All rights reserved': 'All rights reserved',
       'Privacy Policy': 'Privacy Policy',
       'Terms of Service': 'Terms of Service',
@@ -41,24 +38,20 @@ export function Footer({ language }: FooterProps) {
       'Higher Secondary School': 'هاءِ سيڪنڊري اسڪول',
       'Committed to excellence in education, nurturing young minds for a brighter future through quality teaching and moral development.': 'تعليم ۾ بهترين ڪارڪردگي، معياري تدريس ۽ اخلاقي ترقي ذريعي نوجوان ذهنن کي روشن مستقبل لاءِ پرورش ڏيڻ لاءِ پابند.',
       'Quick Links': 'فوري لنڪس',
-      'About Us': 'اسان جي باري ۾',
-      'Admissions': 'داخلا',
-      'Academic Calendar': 'تعليمي ڪيلنڊر',
-      'Faculty': 'فيڪلٽي',
-      'Student Life': 'شاگردن جي زندگي',
-      'News & Events': 'خبرون ۽ تقريبون',
+      'Home': 'گھر',
+      'Our Mission': 'اسان جو مشن',
+      'Announcements': 'اعلان',
+      'Our Offerings': 'اسان جون سهولتون',
+      'Contact Us': 'اسان سان رابطو ڪريو',
       'Programs': 'پروگرام',
-      'Pre-Primary': 'پري پرائمري',
-      'Primary Education': 'پرائمري تعليم',
-      'Secondary Education': 'سيڪنڊري تعليم',
-      'Higher Secondary': 'هاءِ سيڪنڊري',
-      'Extracurricular': 'اضافي سرگرميون',
-      'Special Programs': 'خاص پروگرام',
+      'Computer Science': 'ڪمپيوٽر سائنس',
+      'Science': 'سائنس',
+      'Math': 'رياضي',
+      'English': 'انگريزي',
+      'Social Studies': 'سماجي اڀياس',
+      'Languages & Islamic Studies': 'ٻوليون ۽ اسلامي اڀياس',
       'Stay Connected': 'رابطي ۾ رهو',
-      'Follow us on social media for updates and news.': 'اپڊيٽس ۽ خبرن لاءِ سوشل ميڊيا تي اسان جي پيروي ڪريو.',
-      'Subscribe to Newsletter': 'نيوز ليٽر جي رجسٽريشن ڪريو',
-      'Enter your email': 'پنهنجي ايميل داخل ڪريو',
-      'Subscribe': 'رجسٽر ٿيو',
+      'Follow us on social media for the latest updates and school news.': 'اپڊيٽس ۽ خبرن لاءِ سوشل ميڊيا تي اسان جي پيروي ڪريو.',
       'All rights reserved': 'سڀ حق محفوظ آهن',
       'Privacy Policy': 'رازداري پاليسي',
       'Terms of Service': 'خدمت جا شرط',
@@ -68,24 +61,20 @@ export function Footer({ language }: FooterProps) {
       'Higher Secondary School': 'ہائی سیکنڈری اسکول',
       'Committed to excellence in education, nurturing young minds for a brighter future through quality teaching and moral development.': 'تعلیم میں بہترین کارکردگی، معیاری تدریس اور اخلاقی ترقی کے ذریعے نوجوان ذہنوں کو روشن مستقبل کے لیے پرورش دینے کے لیے پابند عہد۔',
       'Quick Links': 'فوری لنکس',
-      'About Us': 'ہمارے بارے میں',
-      'Admissions': 'داخلے',
-      'Academic Calendar': 'تعلیمی کیلنڈر',
-      'Faculty': 'فیکلٹی',
-      'Student Life': 'طلبہ کی زندگی',
-      'News & Events': 'خبریں اور تقریبات',
+      'Home': 'گھر',
+      'Our Mission': 'ہمارا مشن',
+      'Announcements': 'اعلانات',
+      'Our Offerings': 'ہماری سہولیات',
+      'Contact Us': 'ہم سے رابطہ کریں',
       'Programs': 'پروگرامز',
-      'Pre-Primary': 'پری پرائمری',
-      'Primary Education': 'پرائمری تعلیم',
-      'Secondary Education': 'سیکنڈری تعلیم',
-      'Higher Secondary': 'ہائی سیکنڈری',
-      'Extracurricular': 'اضافی سرگرمیاں',
-      'Special Programs': 'خصوصی پروگرامز',
+      'Computer Science': 'کمپیوٹر سائنس',
+      'Science': 'سائنس',
+      'Math': 'ریاضی',
+      'English': 'انگریزی',
+      'Social Studies': 'سماجی علوم',
+      'Languages & Islamic Studies': 'زبانیں اور اسلامی علوم',
       'Stay Connected': 'رابطے میں رہیں',
-      'Follow us on social media for updates and news.': 'اپڈیٹس اور خبروں کے لیے سوشل میڈیا پر ہماری پیروی کریں۔',
-      'Subscribe to Newsletter': 'نیوز لیٹر کی رجسٹریشن کریں',
-      'Enter your email': 'اپنا ای میل درج کریں',
-      'Subscribe': 'رجسٹر ہوں',
+      'Follow us on social media for the latest updates and school news.': 'اپڈیٹس اور خبروں کے لیے سوشل میڈیا پر ہماری پیروی کریں۔',
       'All rights reserved': 'جملہ حقوق محفوظ ہیں',
       'Privacy Policy': 'رازداری کی پالیسی',
       'Terms of Service': 'خدمت کی شرائط',
@@ -95,28 +84,28 @@ export function Footer({ language }: FooterProps) {
   const t = translations[language as keyof typeof translations];
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Facebook, href: "https://www.facebook.com/profile.php?id=100063969792466", label: "Facebook" },
     { icon: Twitter, href: "#", label: "Twitter" },
     { icon: Instagram, href: "#", label: "Instagram" },
     { icon: Youtube, href: "#", label: "YouTube" }
   ];
 
   const quickLinks = [
-    { name: t['About Us'], href: "#" },
-    { name: t['Admissions'], href: "#" },
-    { name: t['Academic Calendar'], href: "#" },
-    { name: t['Faculty'], href: "#" },
-    { name: t['Student Life'], href: "#" },
-    { name: t['News & Events'], href: "#" }
+    { name: t['Home'], href: "/#home" },
+    { name: t['Our Mission'], href: "/#mission" },
+    { name: t['Programs'], href: "/#programs" },
+    { name: t['Our Offerings'], href: "/#offerings" },
+    { name: t['Announcements'], href: "/announcements" },
+    { name: t['Contact Us'], href: "/#contact" }
   ];
 
   const programs = [
-    { name: t['Pre-Primary'], href: "#" },
-    { name: t['Primary Education'], href: "#" },
-    { name: t['Secondary Education'], href: "#" },
-    { name: t['Higher Secondary'], href: "#" },
-    { name: t['Extracurricular'], href: "#" },
-    { name: t['Special Programs'], href: "#" }
+    { name: t['Computer Science'], href: "/subject/Computer-Science" },
+    { name: t['Science'], href: "/subject/Science" },
+    { name: t['Math'], href: "/subject/Math" },
+    { name: t['English'], href: "/subject/English" },
+    { name: t['Social Studies'], href: "/subject/SST" },
+    { name: t['Languages & Islamic Studies'], href: "/subject/Languages-&-Islamic-Studies" },
   ];
 
   return (
@@ -199,24 +188,31 @@ export function Footer({ language }: FooterProps) {
               <div className="space-y-3">
                 <motion.div 
                   whileHover={{ x: 5 }}
-                  className="flex items-center space-x-3 text-sm"
+                  className="flex items-start space-x-3 text-sm"
                 >
-                  <MapPin size={16} className="opacity-80" />
-                  <span className="opacity-80">Mirpur Khas, Sindh, Pakistan</span>
+                  <MapPin size={16} className="opacity-80 mt-1 flex-shrink-0" />
+                  <span className="opacity-80">Village Haji Khair Muhammad Laghari, Near Laghari Petrol Pump, Mirwah Road Mirpurkhas, Sindh, Pakistan</span>
                 </motion.div>
                 <motion.div 
                   whileHover={{ x: 5 }}
                   className="flex items-center space-x-3 text-sm"
                 >
                   <Phone size={16} className="opacity-80" />
-                  <span className="opacity-80">+92 (243) 123-4567</span>
+                  <span className="opacity-80">+92 336 3273937</span>
                 </motion.div>
                 <motion.div 
                   whileHover={{ x: 5 }}
                   className="flex items-center space-x-3 text-sm"
                 >
                   <Mail size={16} className="opacity-80" />
-                  <span className="opacity-80">info@salschool.edu.pk</span>
+                  <span className="opacity-80">schoolsal52gmail.com</span>
+                </motion.div>
+                <motion.div 
+                  whileHover={{ x: 5 }}
+                  className="flex items-center space-x-3 text-sm"
+                >
+                  <Clock size={16} className="opacity-80" />
+                  <span className="opacity-80">Mon - Sat: 8:00 AM - 2:00 PM</span>
                 </motion.div>
               </div>
             </motion.div>
@@ -238,13 +234,12 @@ export function Footer({ language }: FooterProps) {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <motion.a
-                      href={link.href}
-                      whileHover={{ x: 5, color: "#fff" }}
-                      className="text-sm opacity-80 hover:opacity-100 transition-all duration-200"
+                    <Link
+                      to={link.href}
+                      className="text-sm opacity-80 hover:opacity-100 transition-all duration-200 hover:underline"
                     >
                       {link.name}
-                    </motion.a>
+                    </Link>
                   </motion.li>
                 ))}
               </ul>
@@ -267,19 +262,18 @@ export function Footer({ language }: FooterProps) {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <motion.a
-                      href={program.href}
-                      whileHover={{ x: 5, color: "#fff" }}
-                      className="text-sm opacity-80 hover:opacity-100 transition-all duration-200"
+                    <Link
+                      to={program.href}
+                      className="text-sm opacity-80 hover:opacity-100 transition-all duration-200 hover:underline"
                     >
                       {program.name}
-                    </motion.a>
+                    </Link>
                   </motion.li>
                 ))}
               </ul>
             </motion.div>
 
-            {/* Newsletter & Social */}
+            {/* Social */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -298,6 +292,8 @@ export function Footer({ language }: FooterProps) {
                   <motion.a
                     key={index}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     whileHover={{ scale: 1.2, rotate: 360 }}
                     transition={{ duration: 0.8 }}
                     className="w-10 h-10 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-primary-foreground/20 transition-colors duration-200"
@@ -314,25 +310,23 @@ export function Footer({ language }: FooterProps) {
         {/* Bottom bar */}
         <div className="border-t border-primary-foreground/10">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div className="flex flex-col sm:flex-row justify-between items-center">
+            <div className="flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
               <p className="text-sm opacity-80 mb-4 sm:mb-0">
-                © 2025 {t['Shah Abdul Latif']} {t['Higher Secondary School']}. {t['All rights reserved']}.
+                © {new Date().getFullYear()} {t['Shah Abdul Latif']} {t['Higher Secondary School']}. {t['All rights reserved']}.
               </p>
               <div className="flex space-x-6">
-                <motion.a
-                  href="#"
-                  whileHover={{ x: 5 }}
-                  className="text-sm opacity-80 hover:opacity-100 transition-opacity duration-200"
+                <Link
+                  to="#"
+                  className="text-sm opacity-80 hover:opacity-100 transition-opacity duration-200 hover:underline"
                 >
                   {t['Privacy Policy']}
-                </motion.a>
-                <motion.a
-                  href="#"
-                  whileHover={{ x: 5 }}
-                  className="text-sm opacity-80 hover:opacity-100 transition-opacity duration-200"
+                </Link>
+                <Link
+                  to="#"
+                  className="text-sm opacity-80 hover:opacity-100 transition-opacity duration-200 hover:underline"
                 >
                   {t['Terms of Service']}
-                </motion.a>
+                </Link>
               </div>
             </div>
           </div>
