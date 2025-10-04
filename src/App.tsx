@@ -11,6 +11,7 @@ import { LoginPage } from './components/LoginPage';
 import { AnnouncementsPage } from './components/AnnouncementsPage';
 import SubjectPage from './components/SubjectPage';
 import Loader from './components/Loader';
+import { Analytics } from '@vercel/analytics/react';
 
 function HomePage({ language }: { language: string }) {
   return (
@@ -72,6 +73,8 @@ export default function App() {
     }
     return <HomePage language={language} />;
   };
+  
+
 
   return (
     <>
@@ -88,6 +91,7 @@ export default function App() {
         </main>
         <Footer language={language} />
       </div>
+      <Analytics />
     </>
   );
 }
