@@ -10,6 +10,7 @@ import { Footer } from './components/Footer';
 import { LoginPage } from './components/LoginPage';
 import { AnnouncementsPage } from './components/AnnouncementsPage';
 import SubjectPage from './components/SubjectPage';
+import Loader from './components/Loader';
 
 function HomePage({ language }: { language: string }) {
   return (
@@ -26,12 +27,28 @@ function HomePage({ language }: { language: string }) {
 export default function App() {
   const [language, setLanguage] = useState('English');
   const [pathname, setPathname] = useState(window.location.pathname);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const handlePopState = () => {
       setPathname(window.location.pathname);
     };
     window.addEventListener('popstate', handlePopState);
+
+    if (sessionStorage.getItem('isInitialLoadComplete')) {
+      setIsLoading(false);
+    } else {
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+        sessionStorage.setItem('isInitialLoadComplete', 'true');
+      }, 7000);
+
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener('popstate', handlePopState);
+      };
+    }
+
     return () => {
       window.removeEventListener('popstate', handlePopState);
     };
@@ -57,19 +74,20 @@ export default function App() {
   };
 
   return (
-    <div className="bg-background text-foreground font-sans">
-      <Header
-        language={language}
-        setLanguage={setLanguage}
-      />
-      <main>
-        <AnimatePresence mode="wait">
-          {renderPage()}
-        </AnimatePresence>
-      </main>
-      <Footer language={language} />
-    </div>
+    <>
+      {isLoading && <Loader isLoading={isLoading} />}
+      <div className={`bg-background text-foreground font-sans transition-opacity duration-500 ${!isLoading ? 'opacity-100' : 'opacity-0'}`}>
+        <Header
+          language={language}
+          setLanguage={setLanguage}
+        />
+        <main>
+          <AnimatePresence mode="wait">
+            {renderPage()}
+          </AnimatePresence>
+        </main>
+        <Footer language={language} />
+      </div>
+    </>
   );
 }
-
-

@@ -3,6 +3,7 @@ import { Button } from './ui/button';
 import { GraduationCap, BookOpen, Users } from 'lucide-react';
 import videoBg from '/School aerial view.mp4';
 
+
 interface HeroSectionProps {
   language: string;
 }
@@ -54,6 +55,7 @@ export function HeroSection({ language }: HeroSectionProps) {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      
       {/* Background Video */}
       <div className="absolute inset-0">
       <video
@@ -103,7 +105,7 @@ export function HeroSection({ language }: HeroSectionProps) {
         </motion.div>
       ))}
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 bg-[rgba(233,4,4,0)]">
+<div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 bg-[rgba(233,4,4,0)]">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
