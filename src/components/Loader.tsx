@@ -16,6 +16,7 @@ const Loader: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
           </div>
         </div>
         <p className="text-lg text-primary font-semibold animate-pulse">Loading...</p>
+        <p className="text-sm text-muted-foreground">Made with ❤️ by <b>Amanat Ali</b></p>
       </div>
     </div>
   );
