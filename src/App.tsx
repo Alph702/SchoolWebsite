@@ -90,8 +90,8 @@ export default function App() {
           </AnimatePresence>
         </main>
         <Footer language={language} />
+        <Analytics />
       </div>
-      <Analytics />
     </>
   );
 }
