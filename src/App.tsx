@@ -1,5 +1,4 @@
-import { useState } from 'react';
-// import { Routes, Route, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { AnimatePresence } from 'motion/react';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
@@ -73,6 +72,4 @@ export default function App() {
   );
 }
 
-function useEffect(arg0: () => () => void, arg1: never[]) {
-  throw new Error('Function not implemented.');
-}
+

@@ -35,3 +35,6 @@ yarn-error.log*
 __pycache__/
 .venv/
 .env
+
+#AI's
+GEMINI.md
